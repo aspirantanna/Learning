@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html ng-app="store">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js"></script>
+    <script type="text/javascript" src="Scripts/app/app.js"></script>
+</head>
+<body ng-controller="strorecontroller as store">
+    <p>{{ 'Hello ' + 'World!!!'}}</p>
+
+    <div ng-hide="store.product.soldOut">
+        <h1>{{store.product.name}}</h1>
+        <h2>${{store.product.price}}</h2>
+        <p>{{store.product.description}}</p>
+        <button ng-show="store.product.canPurchase">Add to Cart</button>
+    </div>
+    <div ng-repeat="product in store.products">
+        <div ng-hide="product.soldOut">
+            <h1>{{product.name}}</h1>
+            <h2>${{product.price}}</h2>
+            <p>{{product.description}}</p>
+            <button ng-show="product.canPurchase">Add to Cart</button>
+        </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="product in store.products | limitTo:3 | orderBy:'-price'">
+            <h3>
+                {{product.name}}
+                <em class="pull-right">{{product.price | currency}}</em>
+            </h3>
+        </li>
+    </ul>
+    <p>Filters:</p>
+    {{'1388123412323' | date:'MM/dd/yyyy @ h:mma'}}
+
+    {{'annadurai' | uppercase}}<br />
+
+    {{'ANNADURAI' | lowercase}}<br />
+
+    {{'My Description' | limitTo:8}}<br />
+
+
+</body>
+</html>
