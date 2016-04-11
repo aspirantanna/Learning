@@ -1,0 +1,4 @@
+Hi this is the text message!!!
+
+
+Moved from Folder1 to Folder2
